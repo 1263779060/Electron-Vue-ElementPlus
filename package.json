@@ -1,0 +1,58 @@
+{
+	"name": "vue3_cli_default",
+	"version": "0.0.0",
+	"main": "electron-main.js",
+	"scripts": {
+		"dev": "electron .",
+		"build": "vite build",
+		"serve": "vite preview",
+		"start": "npm run build && electron .",
+		"pack": "npm run build && electron-builder"
+	},
+	"dependencies": {
+		"element-plus": "^2.10.5",
+		"vue": "^3.5.18",
+		"vue-router": "^4.5.1"
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "^6.0.1",
+		"@vue/compiler-sfc": "^3.5.18",
+		"electron": "^37.2.6",
+		"electron-builder": "^26.0.12",
+		"vite": "^7.0.6"
+	},
+	"build": {
+		"appId": "com.yourapp.id",
+		"productName": "MY APP DEMO",
+		"directories": {
+			"output": "release"
+		},
+		"files": [
+			"dist/**/*",
+			"electron-main.js",
+			"my_app.ico"
+		],
+		"mac": {
+			"target": "dmg"
+		},
+		"win": {
+			"icon": "my_app.ico",
+			"target": [
+				{
+					"target": "nsis",
+					"arch": [
+						"x64"
+					]
+				}
+			]
+		},
+		"nsis": {
+			"oneClick": false,
+			"allowToChangeInstallationDirectory": true,
+			"createDesktopShortcut": true,
+			"createStartMenuShortcut": true,
+			"shortcutName": "MY APP DEMO",
+			"license": "license.txt"
+		}
+	}
+}
